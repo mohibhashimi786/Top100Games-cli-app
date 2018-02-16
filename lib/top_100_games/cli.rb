@@ -36,7 +36,7 @@ class Top100Games::CLI
 	end
 
 	def exit
-		Top100Games::Scraper.new.scrape_top_games_index
+		Top100Games::Game.new.create_from_index
 		#Informs user that the list changes frequently and to come
 		puts "Please come back soon.  The list is continously updated based upon user and editor ratings."
 	end

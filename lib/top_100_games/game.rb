@@ -13,8 +13,10 @@ class Top100Games::Game
 	end
 
 	def self.create_from_index(game_attributes)
-		new_game = self.new(game_attributes)
-		
+		new_game = self.new
+		new_game.name = game_attributes.css("span.name a").text
+		binding.pry
+	end
 
 	def self.all
 		@@all 

@@ -8,20 +8,12 @@ class Top100Games::Scraper
 
 	#scrape the website to get names and attribute of top games
 	def scrape_top_games_index
-		doc = self.get_page.css(".pod_topgames ol li")
-		doc.each do |items|
-			rank = items.css("div.count").text
-			name = items.css("span.name a").text
-			consoles = items.css("span.sub").text
-			url = "https://gamefaqs.gamespot.com#{items.css("a").attribute("href").text}"
-			binding.pry
-	end
-
-		
+		self.get_page.css(".pod_topgames ol li")
 	end
 
 	def create_game_profile
-		
+		scrape_top_games_index.each { |game| Top100Games::Game.create_from_index(game)}
+			binding.pry
 	end
 
 
