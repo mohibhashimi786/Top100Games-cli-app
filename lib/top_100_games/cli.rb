@@ -14,12 +14,12 @@ class Top100Games::CLI
 
 	def list_games
 		#welcome user
-		puts "Welcome to TOP TEN GAMES!"
+		puts "Welcome to TOP 100 GAMES!"
 		#lists the games from website 
 	  		puts "1. Game A"
 			puts "2. Game B"
 			puts "3. Game C"
-			puts "Currently, based on user and editor ratings, the above are your TOP TEN GAMES!"
+			puts "Currently, based on user and editor ratings, the above are your TOP 100 GAMES!"
 	end
 
 	def menu
@@ -37,6 +37,7 @@ class Top100Games::CLI
 
 	def exit
 		Top100Games::Scraper.new.scrape_top_games_index
+		#Informs user that the list changes frequently and to come
 		puts "Please come back soon.  The list is continously updated based upon user and editor ratings."
 	end
 

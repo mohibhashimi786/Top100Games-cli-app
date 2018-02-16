@@ -20,7 +20,7 @@ class Top100Games::Scraper
 		
 	end
 
-	def single_game_profile
+	def create_game_profile
 		
 	end
 
