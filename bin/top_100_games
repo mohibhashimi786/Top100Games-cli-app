@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require './lib/top_100_games'
+
+#After initial setup, leave executable file alone, have it run CLI file in bin and program user interface there.
+
+Top100Games::CLI.new.call

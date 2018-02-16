@@ -1,5 +1,2 @@
-require "top_100_games/version"
-
-module Top100Games
-  # Your code goes here...
-end
+require_relative "top_100_games/version"
+require_relative './top_100_games/cli'
