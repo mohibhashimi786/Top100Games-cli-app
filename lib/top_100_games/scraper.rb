@@ -1,4 +1,4 @@
-class GamesTopTen::Scraper
+class Top100Games::Scraper
 
 	
 	#gets the html page for us using Nokogiri

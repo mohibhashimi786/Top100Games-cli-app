@@ -4,7 +4,6 @@ class Top100Games::CLI
 
 
 	def call
-		puts "testing"
 		#lists the games for user
 		list_games
 		#Requests which game user would like more information on.
@@ -37,7 +36,7 @@ class Top100Games::CLI
 	end
 
 	def exit
-		GamesTopTen::Scraper.new.scrape_top_games_index
+		Top100Games::Scraper.new.scrape_top_games_index
 		puts "Please come back soon.  The list is continously updated based upon user and editor ratings."
 	end
 
