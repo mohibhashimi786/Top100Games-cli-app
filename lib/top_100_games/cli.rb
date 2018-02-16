@@ -40,7 +40,7 @@ class Top100Games::CLI
 		GamesTopTen::Scraper.new.scrape_top_games_index
 		puts "Please come back soon.  The list is continously updated based upon user and editor ratings."
 	end
-end
+
 
 
 
