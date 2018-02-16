@@ -1,5 +1,8 @@
-require "top_100_games/version"
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
 
-module Top100Games
-  # Your code goes here...
-end
+require_relative 'top_100_games/version'
+require_relative './top_100_games/scraper'
+
+require_relative './top_100_games/cli'
