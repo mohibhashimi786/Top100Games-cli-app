@@ -37,6 +37,7 @@ class Top100Games::CLI
 
 	def exit
 		Top100Games::Scraper.new.scrape_top_games_index
+		binding.pry
 		#Informs user that the list changes frequently and to come
 		puts "Please come back soon.  The list is continously updated based upon user and editor ratings."
 	end
