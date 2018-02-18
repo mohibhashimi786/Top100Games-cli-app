@@ -9,12 +9,14 @@ class Top100Games::Scraper
 	#scrape the website to get names and top level attributes of top games
 	def scrape_top_games_index
 		self.get_page.css(".pod_topgames ol li")
-		binding.pry
 	end
 
-	#scrape individual game's attributes
+	#scrape individual game and its required attributes through game class's 'create_from_index(game) class method'
 	def create_game_profile
-		scrape_top_games_index.each {|games| Top100Games::Game.new_from_index(games)	
+		scrape_top_games_index.each do |game| 
+			Top100Games::Game.create_from_index(game) 
+			binding.pry
+		end
 	end
 
 
