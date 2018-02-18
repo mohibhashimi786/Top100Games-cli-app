@@ -7,14 +7,16 @@ class Top100Games::Game
 	@@all = []
 
 	#mass assignment initialization of attributes in case attributes are modified on the gamefaqs website.
-	def initialize(attributes)
-		attributes.each {|key, value| self.send(("#{key}="), value)}
+	def initialize(name = nil, rank = nil, consoles = nil, url = nil)
+		@name = name
+		@rank = rank
+		@consoles = consoles
+		@url = url
 		self.class.all << self
 	end
 
-	def self.create_from_index(game_attributes)
-		new_game = self.new
-		new_game.name = game_attributes.css("span.name a").text
+	def self.create_from_index(game)
+		self.new(game.css("span.name a").text)
 		binding.pry
 	end
 
