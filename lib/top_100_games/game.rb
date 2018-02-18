@@ -22,21 +22,44 @@ class Top100Games::Game
 		consoles = game.css("span.sub").text
 		url = "https://gamefaqs.gamespot.com#{game.css("a").attribute("href").text}"
 		self.new(name, rank, consoles, url)
-		doc ||= Nokogiri::HTML(open(url))
-		category = doc.css("div.span8").css("ol.crumbs").css("li.crumb")[1].css("a").text
-		synopsis = doc.css("div.desc").text
-		difficulty = doc.css("div.rating.mygames_stats_diff.mygames_stat3").css("a").text
-		release_date = doc.css("div.pod.pod_gameinfo").css("li")[3].css("a").text
-		esrb = doc.css("span.esrb_logo").text.gsub(" - ", "")
-		creator ||= doc.css("div.pod.pod_gameinfo").css("li")[2].css("a").text
-		user_rating = doc.xpath("//*[@id='js_mygames_rate']/div[1]/div/div/a").text
-		critic_score = doc.css("div.score.metacritic_high").text
+		game_page ||= Nokogiri::HTML(open(url))
+		category = 
+		synopsis = 
+		difficulty = 
+		release_date = game_page.css("div.pod.pod_gameinfo").css("li")[3].css("a").text
+		esrb = game_page.css("span.esrb_logo").text.gsub(" - ", "")
+		creator ||= game_page.css("div.pod.pod_gameinfo").css("li")[2].css("a").text
+		user_rating = game_page.xpath("//*[@id='js_mygames_rate']/div[1]/div/div/a").text
+		critic_score = game_page.css("div.score.metacritic_high").text
+		binding.pry
+	end
+
+	def self.locate(selector)
+		self.all[selector - 1]
 		binding.pry
 	end
 
 	def self.all
 		@@all 
 	end
+
+	def game_page
+		@game_page ||= Nokogiri::HTML(open(self.url))
+	end
+
+	def category
+		@category ||= game_page.css("div.span8").css("ol.crumbs").css("li.crumb")[1].css("a").text
+	end
+
+	def synopsis
+		@synopsis ||= game_page.css("div.desc").text
+	end
+
+	def difficulty
+		difficulty ||= game_page.css("div.rating.mygames_stats_diff.mygames_stat3").css("a").text
+	end
+	
+
 
 end
 
