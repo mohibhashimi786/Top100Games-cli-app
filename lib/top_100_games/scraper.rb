@@ -14,10 +14,7 @@ class Top100Games::Scraper
 
 	#scrape individual game's attributes
 	def create_game_profile
-		scrape_top_games_index.each do |games|
-		Top100Games::Game.new_from_index(games)
-		end
-			
+		scrape_top_games_index.each {|games| Top100Games::Game.new_from_index(games)	
 	end
 
 
